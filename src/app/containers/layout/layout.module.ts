@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {LayoutComponent} from '../../feature/layout/layout.component';
 import {LayoutPageComponent} from './layout.page.component';
 import {MdButtonModule, MdInputModule, MdIconModule, MdMenuModule, MdSidenavModule} from '@angular/material';
-import {HeadNavModule} from '../../feature/layout/head-nav/head-nav.module';
 import {RouterModule, Routes} from '@angular/router';
 import {GlobalSharedModule} from '../../shared/modules/global-shared.module';
 import {BrowserModule} from '@angular/platform-browser';
