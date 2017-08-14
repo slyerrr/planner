@@ -1,0 +1,38 @@
+#content-wrapper {
+  overflow: auto;
+  height: auto;
+}
+
+.page-content {
+  padding:15px;
+}
+
+.sidenav {
+  display: flex;
+  width:250px;
+}
+
+.sidenav-fab-container {
+  width: 500px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.sidenav-fab-container md-sidenav {
+  max-width: 200px;
+}
+
+.sidenav-fab-container .mat-sidenav-content,
+.sidenav-fab-container md-sidenav {
+  display: flex;
+  overflow: visible;
+}
+
+.mat-sidenav-content{
+  display: flex;
+  overflow: visible!important;
+}
+
+.mat-sidenav-container{
+  background-color: #edf1f5;
+}

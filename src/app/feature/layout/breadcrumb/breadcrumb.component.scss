@@ -1,0 +1,18 @@
+.breadcrumb{
+  padding: 20px;
+  background: #e9edf2;
+  border-bottom: 1px solid #dee2e8;
+
+  .meta .page {
+    font-size: 20px;
+    font-weight: 300;
+    color: #74767d;
+    padding: 0;
+    margin: 0 0 4px;
+  }
+
+  .breadcrumb-links{
+    font-size: 13px;
+    color: #90999c;
+  }
+}

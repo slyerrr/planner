@@ -1,0 +1,61 @@
+<div class="row text-center">
+  <div class="col-md-4">
+    <div class="btn-group">
+      <!--<button md-button color="accent"-->
+              <!--mwlCalendarPreviousView-->
+              <!--[view]="view"-->
+              <!--[(viewDate)]="viewDate"-->
+              <!--(viewDateChange)="viewDateChange.next(viewDate)">-->
+        <!--Previous-->
+      <!--</button>-->
+
+      <!--<div-->
+        <!--class="btn btn-primary"-->
+        <!--mwlCalendarPreviousView-->
+        <!--[view]="view"-->
+        <!--[(viewDate)]="viewDate"-->
+        <!--(viewDateChange)="viewDateChange.emit(viewDate)">-->
+        <!--Previous-->
+      <!--</div>-->
+      <!--<div-->
+        <!--class="btn btn-secondary"-->
+        <!--mwlCalendarToday-->
+        <!--[(viewDate)]="viewDate"-->
+        <!--(viewDateChange)="viewDateChange.emit(viewDate)">-->
+        <!--Today-->
+      <!--</div>-->
+      <!--<div-->
+        <!--class="btn btn-primary"-->
+        <!--mwlCalendarNextView-->
+        <!--[view]="view"-->
+        <!--[(viewDate)]="viewDate"-->
+        <!--(viewDateChange)="viewDateChange.emit(viewDate)">-->
+        <!--Next-->
+      <!--</div>-->
+    </div>
+  </div>
+  <div class="col-md-4">
+    <!--<h3>Data : {{ viewDate }}</h3>-->
+    <!--<h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):locale }}</h3>-->
+  </div>
+  <div class="col-md-4">
+    <div class="btn-group">
+      <button md-raised-button color="accent"
+              (click)="viewChange.emit('month')"
+              [class.active]="view === 'month'">
+        Month
+      </button>
+      <button md-raised-button color="accent"
+              (click)="viewChange.emit('week')"
+              [class.active]="view === 'week'">
+        Week
+      </button>
+      <button md-raised-button color="accent"
+              (click)="viewChange.emit('day')"
+              [class.active]="view === 'day'">
+        Day
+      </button>
+    </div>
+  </div>
+</div>
+<br>

@@ -1,0 +1,48 @@
+.header {
+  height: 60px;
+  background: #fff;
+  margin-left: 0!important;
+  margin-right: 0!important;
+  -webkit-box-shadow: 0 5px 5px -5px rgba(0,0,0,.1);
+  -moz-box-shadow: 0 5px 5px -5px rgba(0,0,0,.1);
+  box-shadow: 0 5px 5px -5px rgba(0,0,0,.1);
+}
+
+.row.header .user>.item {
+  width: 65px;
+  height: 60px;
+  padding-top:10px;
+  float: right;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.row.header .meta .page {
+  font-size: 17px;
+  padding-top: 11px;
+}
+
+.row.header .meta div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.row.header .meta .breadcrumb-links {
+  font-size: 10px;
+}
+
+.menu__icon{
+  font-size: 26px;
+  line-height: 60px;
+
+}
+
+.noticifation__icon{
+  padding-top:5px
+}
