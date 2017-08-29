@@ -1,29 +1,25 @@
 <h4 class="filter">Filter Projects</h4>
 <md-input-container>
-  <input mdInput placeholder="Filter by name" [mdAutocomplete]="auto" [formControl]="stateCtrl">
+  <input mdInput placeholder="Filter by owner" [mdAutocomplete]="auto" [formControl]="ownerCtrl"  (blur)="check()"  >
+  <!--this produces an animation while searching for the typed characters-->
+  <span mdPrefix>
+    loading
+      <i [style.visibility]="true" class="fa fa-refresh fa-spin"
+         style="font-size:14px;color:black;margin-right:5px"></i>
+   </span>
 </md-input-container>
 
-<md-autocomplete #auto="mdAutocomplete">
-  <md-option *ngFor="let state of filteredStates | async" [value]="state">
-    {{ state }}
+<md-autocomplete #auto="mdAutocomplete" onchange="sth($event)"  >
+  <md-option *ngFor="let owner of filteredOwners | async" [value]="owner"  (onSelectionChange)="selectedOwner($event, owner)"  >
+    {{ owner }}
   </md-option>
 </md-autocomplete>
 
-<div class="panel-filter">
-  <div class="panel-filter-heading">Manager</div>
-  <div class="panel-filter-body">
-    <md-radio-group class="example-radio-group" [(ngModel)]="chosenManager">
-      <md-radio-button class="example-radio-button label" *ngFor="let manager of managers" [value]="manager">
-        {{manager}}
-      </md-radio-button>
-    </md-radio-group>
-  </div>
-</div>
 
 <div class="panel-filter">
   <div class="panel-filter-heading">Status</div>
   <div class="panel-filter-body">
-    <md-radio-group class="example-radio-group" [(ngModel)]="chosenStatus">
+    <md-radio-group class="example-radio-group" [(ngModel)]="chosenStatus" (change)="filterByStatus.emit($event.value)">
       <md-radio-button class="example-radio-button label" *ngFor="let status of statuses" [value]="status">
         {{status}}
       </md-radio-button>
@@ -35,19 +31,9 @@
   <div class="panel-filter-heading">Tags</div>
   <div class="panel-filter-body">
     <section class="example-section">
-      <md-checkbox class="example-margin label" *ngFor="let tag of tags">{{tag}}</md-checkbox>
-
+      <md-checkbox class="example-margin label" *ngFor="let tag of tags" (change)="filterByTags.emit($event)" value="{{tag}}">{{tag}}</md-checkbox>
     </section>
   </div>
 </div>
 
-<div class="panel-filter">
-  <div class="panel-filter-heading">By date</div>
-  <div class="panel-filter-body">
-    <md-radio-group class="example-radio-group" [(ngModel)]="chosenDate">
-      <md-radio-button class="example-radio-button label" *ngFor="let date of dates" [value]="date">
-        {{date}}
-      </md-radio-button>
-    </md-radio-group>
-  </div>
-</div>
+

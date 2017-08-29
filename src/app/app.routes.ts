@@ -1,6 +1,5 @@
 import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
 import {LoginPageComponent} from './containers/login/login.page.component';
-import {ProjectsComponent} from './feature/projects/projects.component';
 import {LayoutPageComponent} from './containers/layout/layout.page.component';
 
 

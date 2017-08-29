@@ -15,10 +15,20 @@ function generateProjects () {
       "cost": faker.commerce.price(),
       "start": faker.date.past(),
       "end":  faker.date.future(),
-      "owner": faker.random.arrayElement([
-        'Jakub Karcz',
-        'Michał Malucha',
+      "status" : faker.random.arrayElement([
+        'open',
+        'completed',
+        'canceled'
+      ]),
+      "owners": faker.random.arrayElement([
+        'Jakub Nowak',
+        'Jan Kowalski',
         'Papilon'
+      ]),
+      "tags": faker.random.arrayElement([
+        'Energy',
+        'IT',
+        'Nuclear'
       ]),
       "country_code": faker.address.countryCode()
     })
@@ -29,6 +39,6 @@ function generateProjects () {
 
 // json-server requires that you export
 // a function which generates the data set
-module.exports = generateProjects
+module.exports = generateProjects;
 
 

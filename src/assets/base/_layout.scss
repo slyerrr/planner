@@ -34,6 +34,7 @@ h2 {
 
   font-size:24px;
   font-weight: 400;
+  margin:20px 0;
 
 }
 
@@ -72,10 +73,34 @@ h4 {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     padding-right: 40px;
+    overflow: auto;
 
     &-withoutFilter{
       padding:30px;
     }
+
+  }
+
+}
+
+.content{
+
+
+  &__sidebar {
+    float:left;
+    background-color: #f7fafc !important;
+
+    margin:0;
+    padding:20px;
+    width: 200px;
+  }
+
+  &__box{
+    float:left;
+    border-left: 1px solid #e6e6e6;
+
+
+    position: relative;
 
   }
 

@@ -21,30 +21,20 @@ export class SideNavComponent implements OnInit {
 
   menu: any = [
     {
-      url: 'dashboard',
-      name: 'Dashboard',
-      icon: 'dashboard'
-    },
-    {
       url: 'calendar',
       name: 'Calendar',
       icon: 'perm_contact_calendar'
-    },
-    {
-      url: 'teamCall',
-      name: 'Team view',
-      icon: 'recent_actors'
-    },
-    {
-      url: 'tasks',
-      name: 'Tasks',
-      icon: 'event_note'
     },
     {
       url: 'projects',
       name: 'Projects',
       icon: 'view_list'
     },
+    {
+      url: 'contacts',
+      name: 'Contacts',
+      icon: 'recent_actors'
+    }
   ];
 
   constructor() { }
