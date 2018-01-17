@@ -1,0 +1,125 @@
+<div class="panel">
+  <div class="panel-body-withoutFilter">
+    <form [formGroup]="projectForm" #form="ngForm" autocomplete="off">
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-form-field class="example-full-width">
+            <input matInput
+                   formControlName="name"
+                   ngControl="name"
+                   class="form__control"
+                   id="name"
+                   [(ngModel)]="project.name"
+                   placeholder="Name">
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+          <mat-form-field>
+
+            <input matInput
+                   formControlName="owner"
+                   ngControl="owner"
+                   class="form__control"
+                   id="owner"
+                   [(ngModel)]="project.owner"
+                   placeholder="Owner"
+                   aria-label="Number"
+                   [formControl]="owner"
+                   [matAutocomplete]="auto">
+
+          </mat-form-field>
+
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let owner of filteredOptions | async" [value]="owner">
+              {{ owner }}
+            </mat-option>
+          </mat-autocomplete>
+
+
+        </div>
+
+        <div class="col-sm-2">
+
+          <mat-form-field>
+            <mat-select placeholder="Country">
+              <mat-option *ngFor="let country of countries" [value]="country.value">{{ country.viewValue }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+
+        <div class="col-sm-12">
+
+          <mat-form-field>
+
+                <textarea matInput
+                          formControlName="desc"
+                          ngControl="desc"
+                          class="form__control"
+                          id="desc"
+                          [(ngModel)]="project.desc"
+                          placeholder="Description">
+                  </textarea>
+
+
+          </mat-form-field>
+
+
+        </div>
+        <div class="col-sm-4">
+          <mat-form-field class="example-full-width">
+            <input matInput
+                   formControlName="cost"
+                   ngControl="cost"
+                   class="form__control"
+                   id="cost"
+                   [(ngModel)]="project.cost"
+                   placeholder="Cost">
+          </mat-form-field>
+
+        </div>
+
+        <div class="col-sm-4">
+
+          <mat-radio-group class="example-radio-group" ngControl="status" formControlName="status"
+                           [(ngModel)]="project.status">
+            <mat-radio-button class="example-radio-button" *ngFor="let status of projectStatuses" [value]="status">
+              {{status}}
+            </mat-radio-button>
+          </mat-radio-group>
+          <div class="example-selected-value">Your selected status is: {{project.status}}</div>
+
+
+        </div>
+        <div class="col-sm-4">
+
+          <mat-form-field>
+            <input matInput [matDatepicker]="pickerStart" placeholder="Choose start date" ngControl="startDate"
+                   formControlName="startDate">
+            <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+            <mat-datepicker #pickerStart></mat-datepicker>
+          </mat-form-field>
+
+        </div>
+        <div class="col-sm-4">
+
+          <mat-form-field>
+            <input matInput [matDatepicker]="pickerEnd" placeholder="Choose end date" ngControl="endDate"
+                   formControlName="endDate">
+            <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+            <mat-datepicker #pickerEnd></mat-datepicker>
+          </mat-form-field>
+
+        </div>
+
+
+        <div class="col-sm-12 top-buffer">
+          <button mat-raised-button routerLink="/projects" color="accent">Close</button>
+          <button mat-raised-button (click)="submit()" color="accent">Update</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+

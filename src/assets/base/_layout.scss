@@ -69,11 +69,8 @@ h4 {
   box-shadow: 0 1px 1px rgba(0,0,0,.05);
 
   .panel-body {
-    position: relative;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    padding-right: 40px;
-    overflow: auto;
+   display:table-row; // firefox hacks etc
+    height:100%;
 
     &-withoutFilter{
       padding:30px;
@@ -87,25 +84,68 @@ h4 {
 
 
   &__sidebar {
-    float:left;
+    width: 20%;
     background-color: #f7fafc !important;
-
+    display: table-cell;
     margin:0;
     padding:20px;
-    width: 200px;
   }
 
   &__box{
-    float:left;
+
     border-left: 1px solid #e6e6e6;
+    width:100%;
+    display:table-cell;
+    padding:20px;
 
-
-    position: relative;
+    &__header {
+      margin-bottom:20px;
+    }
 
   }
+
+
 
 }
 
 .top-buffer {
   margin-top:20px;
+}
+
+
+/** add additional css for material design */
+
+.mat-list-item:hover {
+  background-color: #e8f6ff;
+  border-bottom-color: #d4e2eb;
+}
+
+.mat-list, .mat-nav-list {
+  padding-bottom:8px;
+}
+
+
+.view-selector {
+  //position: absolute;
+  //right: 0;
+  //bottom: -1px;
+  //list-style: none;
+  //white-space: nowrap;
+  //padding: 0;
+  //margin: 0;
+
+  li {
+    display: inline-block;
+    font-size:12px;
+    margin-left:10px;
+
+    &.active {
+      border-bottom:1px solid #111;
+    }
+
+    &:hover{
+      cursor:pointer;
+    }
+  }
+
 }

@@ -44,5 +44,5 @@ export function reducer(state: any, action: any) {
 export const getProjectsState = (state: State) => state.projects;
 
 export const getProjectsList = createSelector(getProjectsState, projects.projectsList);
-export const getProjectsListLoading = createSelector(getProjectsState, projects.projectsLoading)
-;
+export const getProjectsListLoading = createSelector(getProjectsState, projects.projectsLoading);
+export const getProjectsListLength = createSelector(getProjectsState, projects.projectsLength);

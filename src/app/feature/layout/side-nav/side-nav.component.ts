@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
       </li>
       <li class="sidebar-title"><span>NAVIGATION</span></li>
       <li class="sidebar-list" *ngFor="let item of menu">
-      <a routerLink="/{{item.url}}">{{item.name}} <md-icon class="menu-icon">{{item.icon}}</md-icon></a>
+      <a routerLink="/{{item.url}}">{{item.name}} <mat-icon class="menu-icon">{{item.icon}}</mat-icon></a>
       </li>
     </ul>
   `,

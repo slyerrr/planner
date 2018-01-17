@@ -1,21 +1,21 @@
-<h4 class="filter">Filter People</h4>
-<md-input-container>
-  <input mdInput placeholder="Filter by person" [mdAutocomplete]="auto" [formControl]="stateCtrl">
-</md-input-container>
+<!--<h4 class="filter">Filter People</h4>-->
+<!--<mat-input-container>-->
+  <!--<input mdInput placeholder="Filter by person" [mdAutocomplete]="auto" [formControl]="stateCtrl">-->
+<!--</mat-input-container>-->
 
-<md-autocomplete #auto="mdAutocomplete">
-  <md-option *ngFor="let state of filteredStates | async" [value]="state">
-    {{ state }}
-  </md-option>
-</md-autocomplete>
+<!--<mat-autocomplete #auto="mdAutocomplete">-->
+  <!--<mat-option *ngFor="let state of filteredStates | async" [value]="state">-->
+    <!--{{ state }}-->
+  <!--</mat-option>-->
+<!--</mat-autocomplete>-->
 
-<div class="panel-filter">
-  <div class="panel-filter-heading">Group</div>
-  <div class="panel-filter-body">
-    <md-radio-group class="example-radio-group" [(ngModel)]="chosenManager">
-      <md-radio-button class="example-radio-button label" *ngFor="let group of groups" [value]="group">
-        {{group}}
-      </md-radio-button>
-    </md-radio-group>
-  </div>
-</div>
+<!--<div class="panel-filter">-->
+  <!--<div class="panel-filter-heading">Group</div>-->
+  <!--<div class="panel-filter-body">-->
+    <!--<mat-radio-group class="example-radio-group" [(ngModel)]="chosenManager">-->
+      <!--<mat-radio-button class="example-radio-button label" *ngFor="let group of groups" [value]="group">-->
+        <!--{{group}}-->
+      <!--</mat-radio-button>-->
+    <!--</mat-radio-group>-->
+  <!--</div>-->
+<!--</div>-->

@@ -2,7 +2,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `
+  template: `    
     <router-outlet name="login"></router-outlet>
     <router-outlet></router-outlet>
   `,

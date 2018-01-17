@@ -1,19 +1,20 @@
 // libraries
 @import 'libs/bootstrap';
 @import 'libs/material';
-// @import '../../node_modules/angular-calendar/dist/css/angular-calendar.css';
+@import '../../node_modules/angular-calendar/dist/css/angular-calendar.css';
 // core CSS
 @import 'base/mixins';
 @import 'base/colors';
 @import 'base/fonts';
 @import 'base/layout';
 @import 'base/forms';
+@import 'base/tables';
 @import 'base/buttons.scss';
 @import 'base/material.scss';
 @import 'base/loading.scss';
 //components
 @import 'components/login';
-//@import 'components/calendar';
+@import 'components/calendar';
 
 
 

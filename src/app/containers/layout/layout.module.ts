@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {LayoutComponent} from '../../feature/layout/layout.component';
 import {LayoutPageComponent} from './layout.page.component';
-import {MdButtonModule, MdInputModule, MdIconModule, MdMenuModule, MdSidenavModule} from '@angular/material';
+import {MatButtonModule, MatInputModule, MatIconModule, MatMenuModule, MatSidenavModule} from '@angular/material';
 import {RouterModule, Routes} from '@angular/router';
 import {GlobalSharedModule} from '../../shared/modules/global-shared.module';
 import {BrowserModule} from '@angular/platform-browser';
@@ -17,6 +17,10 @@ const routes: Routes = [
       {
         path: 'projects',
         loadChildren: '../projects/projects.module#ProjectsModule'
+      },
+      {
+        path: 'calendar',
+        loadChildren: '../calendar/calendar.module#CalendarModule'
       }
     ]
   }
@@ -32,11 +36,11 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
     GlobalSharedModule,
-    MdSidenavModule,
-    MdIconModule,
-    MdInputModule,
-    MdButtonModule,
-    MdMenuModule
+    MatSidenavModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule,
+    MatMenuModule
   ],
   exports: [
     LayoutPageComponent

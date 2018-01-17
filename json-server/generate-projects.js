@@ -3,9 +3,10 @@
 var faker = require('faker')
 
 function generateProjects () {
-  var projects = []
+  const size = 1000;
+  var projects = [];
 
-  for (var id = 0; id < 50; id++) {
+  for (var id = 0; id < size; id++) {
 
     projects.push({
       "id": id + 1,
@@ -33,6 +34,7 @@ function generateProjects () {
       "country_code": faker.address.countryCode()
     })
   }
+
 
   return { "projects": projects }
 }

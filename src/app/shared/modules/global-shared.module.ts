@@ -19,27 +19,41 @@ import 'rxjs/add/operator/take';
 import {HttpModule} from '@angular/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdButtonModule, MdInputModule} from '@angular/material';
+import {
+  MatButtonModule, MatCommonModule, MatFormFieldModule, MatInputModule,
+  MatPaginatorModule
+} from '@angular/material';
+import {ContentLoadingComponent} from '../components/content-spinner.component';
+import {PaginationComponent} from '../components/pagination.component';
 
 
 
 @NgModule({
   imports: [
     CommonModule,
+    MatCommonModule,
+    MatFormFieldModule,
     RouterModule,
-    MdButtonModule,
-    MdInputModule
+    MatButtonModule,
+    MatInputModule,
+    MatPaginatorModule,
   ],
   declarations: [
-
+    ContentLoadingComponent,
+    PaginationComponent
 
   ],
   exports: [
     ReactiveFormsModule,
     CommonModule,
     HttpModule,
-    MdButtonModule,
-    MdInputModule
+    MatButtonModule,
+    MatInputModule,
+    ContentLoadingComponent,
+    PaginationComponent,
+    MatCommonModule,
+    MatFormFieldModule,
+    MatFormFieldModule,
   ],
 
 })

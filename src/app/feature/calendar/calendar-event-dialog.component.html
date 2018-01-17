@@ -1,46 +1,46 @@
 <div class="dialog__calendar">
 
-<h1 md-dialog-title>Choose  Action</h1>
+<h1 mat-dialog-title>Choose  Action</h1>
 
-<md-tab-group>
-  <md-tab label="Add status">
-    <button *ngFor="let status of statuses" md-button (click)="dialogRef.close('status.value')">{{status.view}}</button>
-  </md-tab>
-  <md-tab label="Book status">
+<mat-tab-group>
+  <mat-tab label="Add status">
+    <button *ngFor="let status of statuses" mat-button (click)="dialogRef.close('status.value')">{{status.view}}</button>
+  </mat-tab>
+  <mat-tab label="Book status">
     <form [formGroup]="addBookStatusForm" class="calendar__event__form">
       <div class="row">
         <div class="col-sm-12 form__dialog__group">
-          <md-select placeholder="Choose PSP" [(ngModel)]="bookStatus.value"  formControlName="psp" id="psp" class="select__status">
-            <md-option *ngFor="let psp of bookingElements" [value]="psp.value" >
+          <mat-select placeholder="Choose PSP" [(ngModel)]="bookStatus.value"  formControlName="psp" id="psp" class="select__status">
+            <mat-option *ngFor="let psp of bookingElements" [value]="psp.value" >
               {{ psp.viewValue }}
-            </md-option>
-          </md-select>
+            </mat-option>
+          </mat-select>
         </div>
 
         <div class="col-sm-12 ">
-          <md-input-container>
+          <mat-input-container>
             <input mdInput placeholder="Description" formControlName="desc" class="form__control"
                    id="desc"
                    [(ngModel)]="bookStatus.desc">
-          </md-input-container>
+          </mat-input-container>
         </div>
 
         <div class="col-sm-12 ">
-          <md-input-container>
+          <mat-input-container>
             <input mdInput placeholder="hours" formControlName="hours" class="form__control" type="number"
                    id="hours"
                    [(ngModel)]="bookStatus.hours">
-          </md-input-container>
+          </mat-input-container>
         </div>
         <div class="col-sm-12 top-buffer">
-          <button md-raised-button (click)="AddStatus()" color="accent">Add status</button>
+          <button mat-raised-button (click)="AddStatus()" color="accent">Add status</button>
         </div>
 
       </div>
       </form>
 
 
-  </md-tab>
-</md-tab-group>
+  </mat-tab>
+</mat-tab-group>
 </div>
 

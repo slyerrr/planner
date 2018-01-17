@@ -28,9 +28,9 @@ export class ProjectsEffects {
     .ofType(ActionTypes.LOAD_PROJECTS)
     .map(toPayload)
     .switchMap(payload => {
-      return this.projectsService.getProjects(payload.parameters)
-        .map(projects => new LoadProjectsSuccessAction(projects))
-        .catch(error => Observable.of(new LoadProjectsFailAction( error )));
+      return this.projectsService.getProjects(payload.request)
+        .map(response => new LoadProjectsSuccessAction(response))
+        .catch(error => Observable.of(new LoadProjectsFailAction({error: error})));
     });
 
 

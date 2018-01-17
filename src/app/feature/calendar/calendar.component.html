@@ -6,7 +6,7 @@
     <div class="panel-body">
 
       <h2> Calendar</h2>
-      <md-divider></md-divider>
+      <mat-divider></mat-divider>
 
           <app-calendar-header (viewChange)="view = $event">
             [(view)]="view"
@@ -18,7 +18,7 @@
             <!--<strong *ngIf="clickedDate">You clicked on this day: {{ clickedDate | date:'medium' }}</strong>-->
           <!--</div>-->
           <h3>June 2017</h3>
-          <md-divider></md-divider>
+          <mat-divider></mat-divider>
 
 
       <div [ngSwitch]="view">

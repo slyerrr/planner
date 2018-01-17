@@ -1,8 +1,8 @@
 import {Component, ChangeDetectionStrategy, OnDestroy} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {Store} from "@ngrx/store";
-import {getProjectsList, getProjectsListLoading, State} from "../../shared/reducers/index";
-import {LoadProjectsAction} from "../../shared/actions/projects.actions"; // refactor inlcude in one place !
+import {Store} from '@ngrx/store';
+import {getProjectsList, getProjectsListLength, getProjectsListLoading, State} from '../../shared/reducers/index';
+import {LoadProjectsAction} from '../../shared/actions/projects.actions'; // refactor inlcude in one place !
 
 
 @Component({
@@ -13,8 +13,8 @@ import {LoadProjectsAction} from "../../shared/actions/projects.actions"; // ref
         <h2> Projects </h2>
       </div>
       <div class="col-sm-8 text-right headline__buttons">
-        <a md-raised-button color="accent" routerLink="/project/new">
-          <md-icon>add</md-icon>
+        <a mat-raised-button color="accent" routerLink="/projects/new">
+          <mat-icon>add</mat-icon>
           Add new project
         </a>
       </div>
@@ -22,67 +22,104 @@ import {LoadProjectsAction} from "../../shared/actions/projects.actions"; // ref
 
     <div class="panel">
       <div class="panel-body">
-        <!--<div class="container-fluid">-->
-        <!--<div class="row">-->
-        <!--<div class="col-sm-2">-->
         <div class="content__sidebar">
-          <projects-sidebar #sideBar
-                            (filterByStatus)="filterByStatus($event)"
-                            (filterByTags)="filterByTags($event)"
-                            (filterByOwner)="filterByOwner($event)"></projects-sidebar>
+          <app-projects-sidebar #sideBar
+                                (filterByStatus)="filterByStatus($event)"
+                                (filterByTags)="filterByTags($event)"
+                                (filterByName)="filterByName($event)"
+                                (filterByOwner)="filterByOwner($event)">
+          </app-projects-sidebar>
         </div>
-        <!--</div>-->
-        <!--<div class="col-sm-10">-->
+
 
         <div class="content__box">
 
-          <div class="loading">
+          <div class="content__box__header">
+            <app-projects-header (sortByColumn)="sortByColumn($event)"
+                                 (selectView)="showAsList = $event">
 
-
-            <div class="spinner">
-              <div class="rect1"></div>
-              <div class="rect2"></div>
-              <div class="rect3"></div>
-              <div class="rect4"></div>
-              <div class="rect5"></div>
-            </div>
+            </app-projects-header>
           </div>
-          
-          
-          <projects-list
-            [loading]="projectsLoading$ | async"
-            [projects]="projects$ | async"
-            (pagination)="pagination($event)"
-            (filterByName)="filterByName($event)"
-          >
-          </projects-list>
+
+
+          <div class="clearfix"></div>
+          <mat-divider></mat-divider>
+
+
+          <app-content-loading [loading]="projectsLoading$ | async"></app-content-loading>
+
+          <app-projects-list *ngIf="showAsList"
+                             [loading]="projectsLoading$ | async"
+                             [projects]="projects$ | async"
+                             (pagination)="pagination($event)"
+                             (filterByName)="filterByName($event)">
+          </app-projects-list>
+
+          <app-projects-table *ngIf="!showAsList"
+                              [loading]="projectsLoading$ | async"
+                              [projects]="projects$ | async"
+                              (pagination)="pagination($event)"
+                              (filterByName)="filterByName($event)">
+          </app-projects-table>
+
+          <mat-divider></mat-divider>
+
+          <app-pagination [length]="projectsLength$ | async" (pagination)="pagination($event)"></app-pagination>
+
+
         </div>
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
+
       </div>
     </div>
   `,
 })
 export class ProjectsPageComponent {
 
+  projectsParams: Object = {
+    _page: 1,
+    _limit: 10
+  };
+
   projects$: Observable<Object>;
 
   projectsLoading$: Observable<boolean>;
 
+  projectsLength$: Observable<number>;
+
   loading: boolean = false;
+
+  showAsList: boolean = true;
 
 
   constructor(private store: Store<State>) {
 
-    this.store.dispatch(new LoadProjectsAction({parameters: '_page=1&_limit=10'}));
+    this.store.dispatch(new LoadProjectsAction({request: this.projectsParams}));
 
     this.projects$ = this.store.select(getProjectsList);
     this.projectsLoading$ = this.store.select(getProjectsListLoading);
+    this.projectsLength$ = this.store.select(getProjectsListLength);
 
 
+    /**
+     *
+     *
+     * jesli loading to blokujemy status tez, sortowanie, kliaknie wszelkie.
+     * podpiecie message jesli jest error z servisem
+     *
+     * tagi ?
+     *
+     * spinner loader
+     * spinner przechodzenie miedzy page
+     *
+     * notification
+     *
+     *
+
+     * responsywnosc
+     *
 
 
+     */
 
 
     /*
@@ -91,24 +128,29 @@ export class ProjectsPageComponent {
 
   }
 
-  pagination(params: any) {
-    this.store.dispatch(new LoadProjectsAction({parameters: `_page=${params.pageIndex}&_limit=${params.pageSize}`}));
+  sortByColumn(column: string) {
+    this.projectsParams = {...this.projectsParams, _sort: column['value']};
+    this.store.dispatch(new LoadProjectsAction({request: this.projectsParams}));
+  }
+
+  pagination(params: object) {
+    this.projectsParams = {...this.projectsParams, _page: params['pageIndex'], _limit: params['pageSize']};
+    this.store.dispatch(new LoadProjectsAction({request: this.projectsParams}));
   }
 
   filterByName(name: string) {
-    this.store.dispatch(new LoadProjectsAction({parameters: `name_like=${name}`}));
+    this.projectsParams = {...this.projectsParams, name_like: name};
+    this.store.dispatch(new LoadProjectsAction({request: this.projectsParams}));
   }
 
   filterByStatus(status: string) {
-    this.store.dispatch(new LoadProjectsAction({parameters: `status=${status}`}));
+    this.projectsParams = {...this.projectsParams, status};
+    this.store.dispatch(new LoadProjectsAction({request: this.projectsParams}));
   }
 
   filterByTags(tag: any) {
     console.log('tag', tag.checked, tag.source.value); // boolean, value
   }
 
-  filterByOwner(owner: string) {
-    console.log('owner', owner);
-  }
 
 }
