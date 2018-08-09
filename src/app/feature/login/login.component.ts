@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../shared/models/User';
-import {AuthService} from "../../shared/services/auth.service";
-import {Router} from "@angular/router";
+import {AuthService} from '../../shared/services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -57,7 +57,7 @@ import {Router} from "@angular/router";
           </div>
         </div>
 
-        
+
           <!--<div class="centered-block">-->
             <!--<h2>Register</h2>-->
             <!--<form (ngSubmit)="registerUser()">-->
@@ -77,7 +77,7 @@ import {Router} from "@angular/router";
 
            <!---->
           <!--</div>-->
-       
+
 
 
       </div>
@@ -87,7 +87,7 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  private showError: boolean = false;
+  private showError = false;
 
   private user: User = {
     username: '',
@@ -125,14 +125,14 @@ export class LoginComponent implements OnInit {
       password: 'ssj2trunks'
     };
 
-    this.authService.registerUser(register).subscribe((res) => {
-      if (res['success'] === true) {
-        this.authService.setUser(res['user']);
-        this.router.navigate(['']);
-      } else {
-        console.log('message!!', res['message']);
-      }
-    })
+    // this.authService.registerUser(register).subscribe((res) => {
+    //   if (res['success'] === true) {
+    //     this.authService.setUser(res['user']);
+    //     this.router.navigate(['']);
+    //   } else {
+    //     console.log('message!!', res['message']);
+    //   }
+    // })
   }
 
   private loginSubmit(event): void {
@@ -143,14 +143,14 @@ export class LoginComponent implements OnInit {
       password: 'ssj2trunks'
     };
 
-    this.authService.registerUser(register).subscribe((res) => {
-      if (res['success'] === true) {
-        this.authService.setUser(res['user']);
-        this.router.navigate(['']);
-      } else {
-        console.log('message!!', res['message']);
-      }
-    })
+    // this.authService.registerUser(register).subscribe((res) => {
+    //   if (res['success'] === true) {
+    //     this.authService.setUser(res['user']);
+    //     this.router.navigate(['']);
+    //   } else {
+    //     console.log('message!!', res['message']);
+    //   }
+    // })
 
 
     //if (this.loginForm.valid && this.loginForm.dirty) {

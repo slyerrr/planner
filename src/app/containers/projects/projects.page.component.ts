@@ -1,9 +1,12 @@
 import {Component, ChangeDetectionStrategy, OnDestroy} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {Store} from '@ngrx/store';
-import {getProjectsList, getProjectsListLength, getProjectsListLoading, State} from '../../shared/reducers/index';
+import { select, Store } from '@ngrx/store';
+// import {getProjectsList, getProjectsListLength, getProjectsListLoading, State} from '../../shared/reducers/index';
 import {LoadProjectsAction} from '../../shared/actions/projects.actions'; // refactor inlcude in one place !
 
+import * as ProjectsActions from '../../core/actions/project.actions';
+import * as fromRoot from '../../core/reducers';
+import * as fromProjects from '../../core/reducers/projects.reducer';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -35,10 +38,10 @@ import {LoadProjectsAction} from '../../shared/actions/projects.actions'; // ref
         <div class="content__box">
 
           <div class="content__box__header">
-            <app-projects-header (sortByColumn)="sortByColumn($event)"
-                                 (selectView)="showAsList = $event">
+            <!--<app-projects-header (sortByColumn)="sortByColumn($event)"-->
+                                 <!--(selectView)="showAsList = $event">-->
 
-            </app-projects-header>
+            <!--</app-projects-header>-->
           </div>
 
 
@@ -91,13 +94,16 @@ export class ProjectsPageComponent {
   showAsList: boolean = true;
 
 
-  constructor(private store: Store<State>) {
+  constructor(private store: Store<fromRoot.State>) {
+  // constructor(private store: Store<State>) {
 
-    this.store.dispatch(new LoadProjectsAction({request: this.projectsParams}));
-
-    this.projects$ = this.store.select(getProjectsList);
-    this.projectsLoading$ = this.store.select(getProjectsListLoading);
-    this.projectsLength$ = this.store.select(getProjectsListLength);
+     // this.store.dispatch(new LoadProjectsAction({request: this.projectsParams}));
+    this.store.dispatch(new ProjectsActions.GetProjects({}));
+    //
+    //  this.projects$ = this.store.select(getProjectsList);
+     this.projects$ = this.store.pipe(select(fromRoot.getProjectsList));
+    // this.projectsLoading$ = this.store.select(getProjectsListLoading);
+    // this.projectsLength$ = this.store.select(getProjectsListLength);
 
 
     /**
@@ -130,22 +136,22 @@ export class ProjectsPageComponent {
 
   sortByColumn(column: string) {
     this.projectsParams = {...this.projectsParams, _sort: column['value']};
-    this.store.dispatch(new LoadProjectsAction({request: this.projectsParams}));
+   // this.store.dispatch(new LoadProjectsAction({request: this.projectsParams}));
   }
 
   pagination(params: object) {
     this.projectsParams = {...this.projectsParams, _page: params['pageIndex'], _limit: params['pageSize']};
-    this.store.dispatch(new LoadProjectsAction({request: this.projectsParams}));
+   // this.store.dispatch(new LoadProjectsAction({request: this.projectsParams}));
   }
 
   filterByName(name: string) {
     this.projectsParams = {...this.projectsParams, name_like: name};
-    this.store.dispatch(new LoadProjectsAction({request: this.projectsParams}));
+  //  this.store.dispatch(new LoadProjectsAction({request: this.projectsParams}));
   }
 
   filterByStatus(status: string) {
     this.projectsParams = {...this.projectsParams, status};
-    this.store.dispatch(new LoadProjectsAction({request: this.projectsParams}));
+    //this.store.dispatch(new LoadProjectsAction({request: this.projectsParams}));
   }
 
   filterByTags(tag: any) {

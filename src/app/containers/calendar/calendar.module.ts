@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path: '',
     component: CalendarPageComponent,
-    canActivate: [CanActivateAuthGuard]
+  //  canActivate: [CanActivateAuthGuard]
   },
 ];
 

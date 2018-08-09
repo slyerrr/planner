@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-layout',
-  template: `
+  template: `    
     <mat-sidenav-container id="sidenav-fab-container">
       <mat-sidenav #sidenav class="sidenav" mode="side" opened="false">
         <app-side-nav></app-side-nav>

@@ -1,11 +1,11 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
-import {go} from '@ngrx/router-store';
 import {Router} from '@angular/router';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-projects-list',
   template: `
 
@@ -19,7 +19,7 @@ import {Router} from '@angular/router';
     
     
     
-    
+
     <div *ngIf="!loading">
       <mat-list>
 
@@ -45,7 +45,7 @@ import {Router} from '@angular/router';
 
   `,
 })
-export class ProjectsListComponent implements OnInit {
+export class ProjectsListComponent implements OnInit, OnChanges {
 
 
 
@@ -81,6 +81,10 @@ export class ProjectsListComponent implements OnInit {
     this.router.navigate(['/projects', id]);
 
     //this.store.dispatch(go('project/' + id));
+  }
+
+  ngOnChanges() {
+    console.log('!!projects', this.projects);
   }
 
 

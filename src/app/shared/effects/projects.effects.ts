@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 // import @ngrx
-import {Effect, Actions, toPayload} from '@ngrx/effects';
+import {Effect, Actions} from '@ngrx/effects';
 import {Action} from '@ngrx/store';
 
 // import rxjs
@@ -23,15 +23,15 @@ export class ProjectsEffects {
     constructor(private actions$: Actions, private projectsService: ProjectsService) {
     }
 
-  @Effect()
-  getProjects$: Observable<Action> = this.actions$
-    .ofType(ActionTypes.LOAD_PROJECTS)
-    .map(toPayload)
-    .switchMap(payload => {
-      return this.projectsService.getProjects(payload.request)
-        .map(response => new LoadProjectsSuccessAction(response))
-        .catch(error => Observable.of(new LoadProjectsFailAction({error: error})));
-    });
+  // @Effect()
+  // getProjects$: Observable<Action> = this.actions$
+  //   .ofType(ActionTypes.LOAD_PROJECTS)
+  //   .map(toPayload)
+  //   .switchMap(payload => {
+  //     return this.projectsService.getProjects(payload.request)
+  //       .map(response => new LoadProjectsSuccessAction(response))
+  //       .catch(error => Observable.of(new LoadProjectsFailAction({error: error})));
+  //   });
 
 
 

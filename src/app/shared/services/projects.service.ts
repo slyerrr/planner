@@ -8,8 +8,8 @@ import { HttpClient } from '@angular/common/http';
 
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subject} from 'rxjs/Subject';
-import {go} from '@ngrx/router-store';
-import {State} from '../reducers/index';
+
+// import {State} from '../reducers/index';
 import 'rxjs/operator/map';
 import {urlEncodeQueryParams} from '../utils/urlEncodeQueryParams';
 
@@ -22,15 +22,12 @@ export class ProjectsService {
 
 
 
-  constructor(private http: HttpClient,
-              private store: Store<State>) {
+  constructor(private http: HttpClient) {
   }
 
 
 
  getProjects(params: any) {
-
-
 
     return this.http.get(`projects?` + urlEncodeQueryParams(params),  {observe: 'response'})
       .map((res) => {

@@ -2,7 +2,6 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output}
 import {FormControl} from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
-import {go} from '@ngrx/router-store';
 import {Router} from '@angular/router';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable }     from 'rxjs/observable';
+import { Observable } from 'rxjs/observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 
@@ -14,58 +14,58 @@ export class AuthService {
 
   constructor(public http: Http) { }
 
-  setUser(user: any) {
-    this.userSource.next(user);
-  }
-
-  registerUser(user): Observable<boolean> {
-    let body = JSON.stringify(user);
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    let options = new RequestOptions({ headers: headers });
-    return this.http.post(`${this.base_url}/register`, body, options).map( (res) => this.setToken(res) );
-  }
-
-  loginUser(user): Observable<Object> {
-    let body = JSON.stringify(user);
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    let options = new RequestOptions({ headers: headers });
-
-    return this.http.post(`${this.base_url}/login`, body, options).map( (res) => this.setToken(res) );
-  }
-
-  logout() {
-    this.token = null;
-    localStorage.removeItem('currentUser');
-  }
-
-  verify(): Observable<Object> {
-
-    let currUser = JSON.parse(localStorage.getItem('currentUser'));
-    let token = ( currUser && 'token' in currUser) ? currUser.token : this.token;
-    let headers = new Headers({ 'x-access-token': token });
-    let options = new RequestOptions({ headers: headers });
-    return this.http.get(`${this.base_url}/check-state`, options).map( res => this.parseRes(res) );
-
-  }
-
-  setToken(res){
-    let body = JSON.parse(res['_body']);
-    if( body['success'] == true ){
-      this.token = body['token'];
-      localStorage.setItem('currentUser', JSON.stringify({
-        email: body['user']['email'],
-        token: this.token
-      }));
-    }
-    return body;
-  }
-
-  parseRes(res){
-    let body = JSON.parse(res['_body']);
-    return body;
-  }
+  // setUser(user: any) {
+  //   this.userSource.next(user);
+  // }
+  //
+  // registerUser(user): Observable<any> {
+  //   let body = JSON.stringify(user);
+  //   let headers = new Headers();
+  //   headers.append('Content-Type', 'application/json');
+  //   let options = new RequestOptions({ headers: headers });
+  //   return this.http.post(`${this.base_url}/register`, body, options).map( (res) => this.setToken(res) );
+  // }
+  //
+  // loginUser(user): Observable<any> {
+  //   let body = JSON.stringify(user);
+  //   let headers = new Headers();
+  //   headers.append('Content-Type', 'application/json');
+  //   let options = new RequestOptions({ headers: headers });
+  //
+  //   return this.http.post(`${this.base_url}/login`, body, options).map( (res) => this.setToken(res) );
+  // }
+  //
+  // logout() {
+  //   this.token = null;
+  //   localStorage.removeItem('currentUser');
+  // }
+  //
+  // verify(): Observable<any> {
+  //
+  //   let currUser = JSON.parse(localStorage.getItem('currentUser'));
+  //   let token = ( currUser && 'token' in currUser) ? currUser.token : this.token;
+  //   let headers = new Headers({ 'x-access-token': token });
+  //   let options = new RequestOptions({ headers: headers });
+  //   return this.http.get(`${this.base_url}/check-state`, options).map( res => this.parseRes(res) );
+  //
+  // }
+  //
+  // setToken(res){
+  //   let body = JSON.parse(res['_body']);
+  //   if( body['success'] == true ){
+  //     this.token = body['token'];
+  //     localStorage.setItem('currentUser', JSON.stringify({
+  //       email: body['user']['email'],
+  //       token: this.token
+  //     }));
+  //   }
+  //   return body;
+  // }
+  //
+  // parseRes(res){
+  //   let body = JSON.parse(res['_body']);
+  //   return body;
+  // }
 
 }
 

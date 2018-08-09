@@ -1,7 +1,7 @@
 import {Component, ChangeDetectionStrategy, OnDestroy} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
-import {getProjectsList, getProjectsListLength, getProjectsListLoading, State} from '../../shared/reducers/index';
+// import {getProjectsList, getProjectsListLength, getProjectsListLoading, State} from '../../shared/reducers/index';
 import {LoadProjectsAction} from '../../shared/actions/projects.actions'; // refactor inlcude in one place !
 
 
@@ -32,8 +32,9 @@ export class CalendarPageComponent {
 
 
 
-  constructor(private store: Store<State>) {
 
+  //constructor(private store: Store<State>) {
+    constructor() {
 
 
 

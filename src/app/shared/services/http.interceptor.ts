@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs/observable';
+import {Observable} from "rxjs/Observable";
 import {environment} from "../../../environments/environment";
 
 @Injectable()
@@ -12,13 +12,14 @@ export class AppHttpInterceptor implements HttpInterceptor {
   }
 
 
-  intercept (req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept (request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    req = req.clone({
-      url: this.restServer + req.url
+
+    request = request.clone({
+      url: this.restServer + request.url
     });
 
-    return next.handle(req);
+    return next.handle(request);
   }
 
 

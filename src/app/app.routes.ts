@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'projects',
     pathMatch: 'full'
   },
   {
@@ -86,4 +86,4 @@ const routes: Routes = [
 
 export const routing = RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules});
 
-export const IPAS_ROUTER_PROVIDERS = [];
+export const ROUTER_PROVIDERS = [];

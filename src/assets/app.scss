@@ -1,7 +1,7 @@
 // libraries
 @import 'libs/bootstrap';
 @import 'libs/material';
-@import '../../node_modules/angular-calendar/dist/css/angular-calendar.css';
+//@import '../../node_modules/angular-calendar/dist/css/angular-calendar.css';
 // core CSS
 @import 'base/mixins';
 @import 'base/colors';
@@ -12,7 +12,7 @@
 @import 'base/buttons.scss';
 @import 'base/material.scss';
 @import 'base/loading.scss';
-//components
+////components
 @import 'components/login';
 @import 'components/calendar';
 

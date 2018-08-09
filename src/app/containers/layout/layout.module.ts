@@ -2,12 +2,14 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {LayoutComponent} from '../../feature/layout/layout.component';
 import {LayoutPageComponent} from './layout.page.component';
-import {MatButtonModule, MatInputModule, MatIconModule, MatMenuModule, MatSidenavModule} from '@angular/material';
 import {RouterModule, Routes} from '@angular/router';
 import {GlobalSharedModule} from '../../shared/modules/global-shared.module';
 import {BrowserModule} from '@angular/platform-browser';
 import {SideNavComponent} from '../../feature/layout/side-nav/side-nav.component';
 import {HeadNavComponent} from '../../feature/layout/head-nav/head-nav.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatIconModule} from "@angular/material/icon";
 
 const routes: Routes = [
   {
@@ -37,10 +39,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     GlobalSharedModule,
     MatSidenavModule,
-    MatIconModule,
-    MatInputModule,
-    MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    GlobalSharedModule,
+    MatIconModule
   ],
   exports: [
     LayoutPageComponent

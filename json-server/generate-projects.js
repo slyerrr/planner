@@ -3,7 +3,7 @@
 var faker = require('faker')
 
 function generateProjects () {
-  const size = 1000;
+  const size = 100;
   var projects = [];
 
   for (var id = 0; id < size; id++) {
